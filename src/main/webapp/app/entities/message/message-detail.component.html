@@ -1,0 +1,56 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="message">
+            <h2><span>Message</span> {{message.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Sender</span></dt>
+                <dd>
+                    <span>{{message.sender}}</span>
+                </dd>
+                <dt><span>Recipient</span></dt>
+                <dd>
+                    <span>{{message.recipient}}</span>
+                </dd>
+                <dt><span>Topic</span></dt>
+                <dd>
+                    <span>{{message.topic}}</span>
+                </dd>
+                <dt><span>Image</span></dt>
+                <dd>
+                    <div *ngIf="message.image">
+                        <a (click)="openFile(message.imageContentType, message.image)">
+                            <img [src]="'data:' + message.imageContentType + ';base64,' + message.image" style="max-width: 100%;" alt="message image"/>
+                        </a>
+                        {{message.imageContentType}}, {{byteSize(message.image)}}
+                    </div>
+                </dd>
+                <dt><span>Image URL</span></dt>
+                <dd>
+                    <span>{{message.imageURL}}</span>
+                </dd>
+                <dt><span>Latitude</span></dt>
+                <dd>
+                    <span>{{message.latitude}}</span>
+                </dd>
+                <dt><span>Longitude</span></dt>
+                <dd>
+                    <span>{{message.longitude}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/message', message.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
