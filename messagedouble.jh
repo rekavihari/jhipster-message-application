@@ -1,0 +1,16 @@
+entity Message {
+	sender String,
+    recipient String,
+    topic String,
+    image ImageBlob, 
+    imageURL String,
+    latitude Double,
+    longitude Double
+}
+
+// Set pagination options
+paginate Message with infinite-scroll
+
+// Use Data Transfert Objects (DTO)
+// dto * with mapstruct
+
